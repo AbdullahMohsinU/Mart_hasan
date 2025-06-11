@@ -1,4 +1,4 @@
-name: Build and Validate
+name: Node.js Build
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Set up Node.js
@@ -19,11 +19,14 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm install
 
-      - name: Run Lint
-        run: npm run lint || echo "Lint failed"
+      - name: Run lint
+        run: npm run lint
 
-      - name: Run Tests
-        run: npm test || echo "Tests failed"
+      - name: Run tests
+        run: npm test
+
+      - name: Build project
+        run: npm run build
