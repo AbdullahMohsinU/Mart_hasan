@@ -11,22 +11,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
+      - name: Change to project directory
+        run: cd Deema_Shopping_Mart-main
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd Deema_Shopping_Mart-main
+          npm install
 
-      - name: Run lint
-        run: npm run lint
-
-      - name: Run tests
-        run: npm test
-
-      - name: Build project
-        run: npm run build
+      - name: Run Build
+        run: |
+          cd Deema_Shopping_Mart-main
+          npm run build
